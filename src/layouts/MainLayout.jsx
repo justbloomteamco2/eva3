@@ -6,6 +6,10 @@ import { MessageCircle } from 'lucide-react';
 import { companyInfo } from '../data/company';
 
 const MainLayout = () => {
+  const handleWhatsappClick = () => {
+    if (window.fbq) window.fbq('track', 'Contact');
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -13,7 +17,16 @@ const MainLayout = () => {
         <Outlet />
       </main>
       <Footer />
-      <a className="floating-whatsapp" href={`https://wa.me/${companyInfo.contact.whatsapp.replace(/\D/g, '')}`} aria-label="Open demo WhatsApp contact"><MessageCircle /></a>
+      <a 
+        className="floating-whatsapp" 
+        href="https://wa.me/919035214907"
+        onClick={handleWhatsappClick}
+        aria-label="Chat on WhatsApp 9035214907"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <MessageCircle />
+      </a>
     </div>
   );
 };
